@@ -109,8 +109,8 @@ SET ip_int = (
 -- and here we are -------------------------------------------------------------
 
 SELECT i.name, i.ip AS ip_addr, 
-	     s.ip AS subnet_addr, s.netmask AS subnet_netmask,
-	     s.ip || "/" || s.netmask_shift AS subnet_cidr
+       s.ip AS subnet_addr, s.netmask AS subnet_netmask,
+       s.ip || "/" || s.netmask_shift AS subnet_cidr
 FROM ip AS i
 LEFT JOIN subnet AS s
 ON (i.ip_int >> (32 - s.netmask_shift)) = (s.ip_int >> (32 - s.netmask_shift));
